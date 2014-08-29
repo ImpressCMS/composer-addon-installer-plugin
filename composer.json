@@ -1,0 +1,22 @@
+{
+    "name": "impresscms/composer-module-installer-plugin",
+    "description": "This plugin allows the installation of ImpressCMS modules from composer",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Janssens",
+            "email": "david.j@impresscms.org"
+        }
+    ],
+    "type": "composer-plugin",
+    "autoload": {
+        "psr-4": {"ImpressCMS\\Composer\\": "src/"}
+    },
+    "extra": {
+        "class": "ImpressCMS\\Composer\\ModuleInstallerPlugin"
+    },
+    "require": {
+        "composer-plugin-api": "1.0.0"
+    }
+}
