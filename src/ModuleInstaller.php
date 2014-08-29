@@ -27,7 +27,7 @@ class ModuleInstaller extends LibraryInstaller
         $icms_modules = '../modules/';
         $extra = $this->composer->getPackage()->getExtra();
         if (isset($extra['icms_modules_path'])) {
-            $icms_root = $extra['icmss_modules_path'];
+            $icms_root = $extra['icms_modules_path'];
         }
         return $icms_modules . $moddir[1];
     }
