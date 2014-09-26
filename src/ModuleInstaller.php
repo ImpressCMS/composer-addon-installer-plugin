@@ -40,6 +40,6 @@ class ModuleInstaller extends LibraryInstaller
      */
     public function supports($packageType)
     {
-        return 'icms-module' === $packageType;
+        return 'impresscms-module' === $packageType;
     }
 } 
