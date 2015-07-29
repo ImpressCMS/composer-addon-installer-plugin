@@ -1,5 +1,5 @@
 {
-    "name": "impresscms/module-installer-plugin",
+    "name": "impresscms/composer-module-installer-plugin",
     "description": "This plugin allows the installation of ImpressCMS modules from composer",
     "minimum-stability": "dev",
     "license": "MIT",
