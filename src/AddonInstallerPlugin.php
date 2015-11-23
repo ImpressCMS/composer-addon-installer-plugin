@@ -12,7 +12,7 @@ use Composer\Composer;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
 
-class ModuleInstallerPlugin implements PluginInterface {
+class AddonInstallerPlugin implements PluginInterface {
     /**
      * activate - add our installer to composer
      *
@@ -23,7 +23,7 @@ class ModuleInstallerPlugin implements PluginInterface {
      */
     public function activate(Composer $composer, IOInterface $io)
     {
-        $installer = new ModuleInstaller($io, $composer);
+        $installer = new AddonsInstaller($io, $composer);
         $composer->getInstallationManager()->addInstaller($installer);
     }
 } 
