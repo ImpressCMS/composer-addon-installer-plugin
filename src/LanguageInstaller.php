@@ -1,8 +1,8 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: fiammy
- * Date: 29/08/14
+ * User: fiammybe
+ * Date: 15/10/15
  *
  *
  */
@@ -12,7 +12,7 @@ namespace ImpressCMS\Composer;
 use Composer\Package\PackageInterface;
 use Composer\Installer\LibraryInstaller;
 
-class LanguageInstaller extends LibraryInstaller
+class ThemeInstaller extends LibraryInstaller
 {
     /**
      * getPackageBasePath
@@ -23,13 +23,13 @@ class LanguageInstaller extends LibraryInstaller
      */
     public function getPackageBasePath(PackageInterface $package)
     {
-        $transdir = explode('/', $package->getName());
-        $icms_translations = './language/';
+        $moddir = explode('/', $package->getName());
+        $icms_themes = './themes/';
         $extra = $this->composer->getPackage()->getExtra();
-        if (isset($extra['icms_translations_path'])) {
-            $icms_root = $extra['icms_translations_path'];
+        if (isset($extra['icms_themes_path'])) {
+            $icms_root = $extra['icms_themes_path'];
         }
-        return $icms_translations . $transdir[1];
+        return $icms_themes . $moddir[1];
     }
     /**
      * supports - determine if this supports a given package type
@@ -40,6 +40,6 @@ class LanguageInstaller extends LibraryInstaller
      */
     public function supports($packageType)
     {
-        return 'impresscms-translation' === $packageType;
+        return 'impresscms-theme' === $packageType;
     }
 } 

@@ -2,7 +2,7 @@
 /**
  * Created by PhpStorm.
  * User: fiammy
- * Date: 29/08/14
+ * Date: 15/10/15
  *
  */
 
@@ -12,7 +12,7 @@ use Composer\Composer;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
 
-class LanguageInstallerPlugin implements PluginInterface {
+class ThemeInstallerPlugin implements PluginInterface {
     /**
      * activate - add our installer to composer
      *
@@ -23,7 +23,7 @@ class LanguageInstallerPlugin implements PluginInterface {
      */
     public function activate(Composer $composer, IOInterface $io)
     {
-        $installer = new ModuleInstaller($io, $composer);
+        $installer = new ThemeInstaller($io, $composer);
         $composer->getInstallationManager()->addInstaller($installer);
     }
 } 
