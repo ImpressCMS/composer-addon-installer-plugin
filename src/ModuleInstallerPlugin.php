@@ -12,7 +12,7 @@ use Composer\Composer;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
 
-class LanguageInstallerPlugin implements PluginInterface {
+class ModuleInstallerPlugin implements PluginInterface {
     /**
      * activate - add our installer to composer
      *

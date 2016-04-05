@@ -12,7 +12,7 @@ namespace ImpressCMS\Composer;
 use Composer\Package\PackageInterface;
 use Composer\Installer\LibraryInstaller;
 
-class LanguageInstaller extends LibraryInstaller
+class ModuleInstaller extends LibraryInstaller
 {
     /**
      * getPackageBasePath
@@ -23,13 +23,13 @@ class LanguageInstaller extends LibraryInstaller
      */
     public function getPackageBasePath(PackageInterface $package)
     {
-        $transdir = explode('/', $package->getName());
-        $icms_translations = './language/';
+        $moddir = explode('/', $package->getName());
+        $icms_modules = './modules/';
         $extra = $this->composer->getPackage()->getExtra();
-        if (isset($extra['icms_translations_path'])) {
-            $icms_root = $extra['icms_translations_path'];
+        if (isset($extra['icms_modules_path'])) {
+            $icms_root = $extra['icms_modules_path'];
         }
-        return $icms_translations . $transdir[1];
+        return $icms_modules . $moddir[1];
     }
     /**
      * supports - determine if this supports a given package type
@@ -40,6 +40,6 @@ class LanguageInstaller extends LibraryInstaller
      */
     public function supports($packageType)
     {
-        return 'impresscms-translation' === $packageType;
+        return 'impresscms-module' === $packageType;
     }
 } 
