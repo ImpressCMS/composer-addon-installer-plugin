@@ -40,6 +40,6 @@ class PreloadInstaller extends LibraryInstaller
      */
     public function supports($packageType)
     {
-        return 'impresscms-theme' === $packageType;
+        return 'impresscms-preload' === $packageType;
     }
 } 
