@@ -14,12 +14,9 @@
         "psr-4": {"ImpressCMS\\Composer\\": "src/"}
     },
     "extra": {
-        "class": "ImpressCMS\\Composer\\ModuleInstallerPlugin",
-        "class": "ImpressCMS\\Composer\\ThemeInstallerPlugin",
-        "class": "ImpressCMS\\Composer\\PreloadInstallerPlugin",
-        "class": "ImpressCMS\\Composer\\LanguageInstallerPlugin"
+        "class": "ImpressCMS\\Composer\\ModuleInstallerPlugin"
     },
-    "require": {
-        "composer-plugin-api": "1.0.0"
+     "require": {
+        "composer-plugin-api": "^1.0"
     }
 }
