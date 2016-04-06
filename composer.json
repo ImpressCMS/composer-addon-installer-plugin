@@ -16,7 +16,7 @@
     "extra": {
         "class": "ImpressCMS\\Composer\\ModuleInstallerPlugin"
     },
-    "require": {
-        "composer-plugin-api": "1.0.0"
+     "require": {
+        "composer-plugin-api": "^1.0"
     }
 }
