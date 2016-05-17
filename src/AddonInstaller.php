@@ -11,7 +11,7 @@ namespace ImpressCMS\Composer;
 use Composer\Package\PackageInterface;
 use Composer\Installer\LibraryInstaller;
 /**
- * Composer installer for XOOPS modules
+ * Composer installer for ImpressCMS modules
  */
 class ModuleInstaller extends LibraryInstaller
 {
