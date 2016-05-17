@@ -23,7 +23,7 @@ class AddonInstallerPlugin implements PluginInterface {
      */
     public function activate(Composer $composer, IOInterface $io)
     {
-        $installer = new AddonsInstaller($io, $composer);
+        $installer = new AddonInstaller($io, $composer);
         $composer->getInstallationManager()->addInstaller($installer);
     }
 } 
