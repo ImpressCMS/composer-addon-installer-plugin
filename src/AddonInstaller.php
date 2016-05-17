@@ -23,23 +23,21 @@ class AddonInstaller extends LibraryInstaller
      */
     public function getPackageBasePath(PackageInterface $package)
     {
-        switch (getPackageType()){
+        switch ($this->package->getType()){
             case 'impresscms-editor':
                 $moddir = explode('/', $package->getName());
-                $icms_modules = './editors/';
+                $icms_modules = '../../editors/';
                 $extra = $this->composer->getPackage()->getExtra();
                 if (isset($extra['icms_editors_path'])) {
                     $icms_root = $extra['icms_editors_path'];
                 }
+                sprintf("PackageBasePath is " . $icms_modules . $moddir[1]);
                 return $icms_modules . $moddir[1];
                 break;
             case 'impresscms-module':
                 $moddir = explode('/', $package->getName());
-                $icms_modules = './modules/';
-                $extra = $this->composer->getPackage()->getExtra();
-                if (isset($extra['icms_modules_path'])) {
-                    $icms_root = $extra['icms_modules_path'];
-                }
+                $icms_modules = '../../modules/';
+                sprintf("PackageBasePath is " . $icms_modules . $moddir[1]);
                 return $icms_modules . $moddir[1];
                 break;
             case 'impresscms-theme':
