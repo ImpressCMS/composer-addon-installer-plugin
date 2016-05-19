@@ -24,7 +24,7 @@ class AddonInstaller extends LibraryInstaller
     public function getInstallPath(PackageInterface $package)
     {
         $moddir = explode('/', $package->getName());
-        $icms_modules = '../modules/';
+        $icms_modules = './modules/';
         $extra = $this->composer->getPackage()->getExtra();
         if (isset($extra['icms_modules_path'])) {
             $icms_modules = $extra['icms_modules_path'];
