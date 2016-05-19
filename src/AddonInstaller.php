@@ -3,17 +3,15 @@
  * Created by PhpStorm.
  * User: fiammy
  * Date: 29/08/14
- *
- *
  */
-
 namespace ImpressCMS\Composer;
+
 use Composer\Package\PackageInterface;
 use Composer\Installer\LibraryInstaller;
 /**
  * Composer installer for ImpressCMS modules
  */
-class ModuleInstaller extends LibraryInstaller
+class AddonInstaller extends LibraryInstaller
 {
     /**
      * getPackageBasePath
@@ -25,7 +23,7 @@ class ModuleInstaller extends LibraryInstaller
     public function getInstallPath(PackageInterface $package)
     {
         $moddir = explode('/', $package->getName());
-        $icms_modules = '../modules/';
+        $icms_modules = './modules/';
         $extra = $this->composer->getPackage()->getExtra();
         if (isset($extra['icms_modules_path'])) {
             $icms_modules = $extra['icms_modules_path'];
@@ -43,5 +41,4 @@ class ModuleInstaller extends LibraryInstaller
     {
         return 'impresscms-module' === $packageType;
     }
-
 } 
