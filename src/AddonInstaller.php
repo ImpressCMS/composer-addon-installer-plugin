@@ -3,17 +3,16 @@
  * Created by PhpStorm.
  * User: fiammy
  * Date: 29/08/14
- *
- *
  */
 
 namespace ImpressCMS\Composer;
+
 use Composer\Package\PackageInterface;
 use Composer\Installer\LibraryInstaller;
 /**
  * Composer installer for ImpressCMS modules
  */
-class ModuleInstaller extends LibraryInstaller
+class AddonInstaller extends LibraryInstaller
 {
     /**
      * getPackageBasePath
