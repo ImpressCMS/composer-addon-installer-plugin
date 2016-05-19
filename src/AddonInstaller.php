@@ -13,6 +13,8 @@ use Composer\Installer\LibraryInstaller;
  */
 class AddonInstaller extends LibraryInstaller
 {
+    $package_type = array('impresscms-module', 'impresscms-theme', 'impresscms-editor');
+
     /**
      * getPackageBasePath
      *
@@ -22,13 +24,51 @@ class AddonInstaller extends LibraryInstaller
      */
     public function getInstallPath(PackageInterface $package)
     {
-        $moddir = explode('/', $package->getName());
-        $icms_modules = './modules/';
-        $extra = $this->composer->getPackage()->getExtra();
-        if (isset($extra['icms_modules_path'])) {
-            $icms_modules = $extra['icms_modules_path'];
+        switch ($package->getType()) {
+            case 'impresscms-module':
+                $moddir = explode('/', $package->getName());
+                $icms_basepath = './modules/';
+                $extra = $package->getExtra();
+                if (isset($extra['icms_modules_path'])) {
+                    $icms_basepath = $extra['icms_modules_path'];
+                }
+                break;
+            case 'impresscms-theme':
+                $moddir = explode('/', $package->getName());
+                $icms_basepath = './themes/';
+                $extra = $package->getExtra();
+                if (isset($extra['icms_themes_path'])) {
+                    $icms_basepath = $extra['icms_themes_path'];
+                }
+                break;
+
+            case 'impresscms-translation':
+                $moddir = explode('/', $package->getName());
+                $icms_basepath = './language/';
+                $extra = $package->getExtra();
+                if (isset($extra['icms_translations_path'])) {
+                    $icms_basepath = $extra['icms_translations_path'];
+                }
+                break;
+            case 'impresscms-plugin':
+                $moddir = explode('/', $package->getName());
+                $icms_basepath = './plugins';
+                $extra = $package->getExtra();
+                if (isset($extra['icms_plugins_path'])) {
+                    $icms_basepath = $extra['icms_plugins_path'];
+                }
+                break;
+
+            case 'impresscms-editor':
+                $moddir = explode('/', $package->getName());
+                $icms_basepath = './editors/';
+                $extra = $package->getExtra();
+                if (isset($extra['icms_editors_path'])) {
+                    $icms_basepath = $extra['icms_editors_path'];
+                }
+                break;
         }
-        return $icms_modules . $moddir[1];
+        return $icms_basepath . $moddir[1];
     }
     /**
      * supports - determine if this supports a given package type
