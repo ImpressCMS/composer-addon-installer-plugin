@@ -20,4 +20,20 @@ class AddonInstallerPlugin implements PluginInterface {
         $installer = new AddonInstaller($io, $composer);
         $composer->getInstallationManager()->addInstaller($installer);
     }
-} 
+
+    /**
+     * @inheritDoc
+     */
+    public function deactivate(Composer $composer, IOInterface $io)
+    {
+
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function uninstall(Composer $composer, IOInterface $io)
+    {
+
+    }
+}
