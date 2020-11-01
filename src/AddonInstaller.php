@@ -1,9 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: fiammy
- * Date: 29/08/14
- */
 
 namespace ImpressCMS\Composer;
 
@@ -15,6 +10,15 @@ use Composer\Installer\LibraryInstaller;
 class AddonInstaller extends LibraryInstaller
 {
     /**
+     * Packages types that are supported by this plugin
+     */
+    public const SUPPORTED_PACKAGE_TYPES = [
+        'impresscms-module',
+        'impresscms-theme',
+        'impresscms-translation'
+    ];
+
+    /**
      * getPackageBasePath
      *
      * @param PackageInterface $package package being installed
@@ -23,13 +27,34 @@ class AddonInstaller extends LibraryInstaller
      */
     public function getInstallPath(PackageInterface $package)
     {
-        $moddir = explode('/', $package->getName());
-        $icms_modules = './modules/';
-        $extra = $this->composer->getPackage()->getExtra();
-        if (isset($extra['icms_modules_path'])) {
-            $icms_modules = $extra['icms_modules_path'];
+        switch ($package->getType()) {
+            case 'impresscms-module':
+                $moddir = explode('/', $package->getName());
+                $icms_basepath = './modules/';
+                $extra = $package->getExtra();
+                if (isset($extra['icms_modules_path'])) {
+                    $icms_basepath = $extra['icms_modules_path'];
+                }
+                break;
+            case 'impresscms-theme':
+                $moddir = explode('/', $package->getName());
+                $icms_basepath = './themes/';
+                $extra = $package->getExtra();
+                if (isset($extra['icms_themes_path'])) {
+                    $icms_basepath = $extra['icms_themes_path'];
+                }
+                break;
+
+            case 'impresscms-translation':
+                $moddir = explode('/', $package->getName());
+                $icms_basepath = './language/';
+                $extra = $package->getExtra();
+                if (isset($extra['icms_translations_path'])) {
+                    $icms_basepath = $extra['icms_translations_path'];
+                }
+                break;
         }
-        return $icms_modules . $moddir[1];
+        return $icms_basepath . $moddir[1];
     }
     /**
      * supports - determine if this supports a given package type
@@ -40,7 +65,6 @@ class AddonInstaller extends LibraryInstaller
      */
     public function supports($packageType)
     {
-        return 'impresscms-module' === $packageType;
+        return in_array($packageType, self::SUPPORTED_PACKAGE_TYPES);
     }
-
 } 

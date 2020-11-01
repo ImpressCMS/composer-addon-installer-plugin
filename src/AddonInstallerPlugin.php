@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: fiammy
- * Date: 29/08/14
- *
- */
 
 namespace ImpressCMS\Composer;
 
