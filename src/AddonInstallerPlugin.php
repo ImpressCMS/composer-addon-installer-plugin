@@ -1,14 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: fiammy
- * Date: 29/08/14
- *
- */
+
 namespace ImpressCMS\Composer;
+
 use Composer\Composer;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
+
 class AddonInstallerPlugin implements PluginInterface {
     /**
      * activate - add our installer to composer

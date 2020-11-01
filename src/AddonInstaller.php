@@ -1,9 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: fiammy
- * Date: 29/08/14
- */
+
 namespace ImpressCMS\Composer;
 
 use Composer\Package\PackageInterface;
@@ -13,7 +9,14 @@ use Composer\Installer\LibraryInstaller;
  */
 class AddonInstaller extends LibraryInstaller
 {
-    $package_type = array('impresscms-module', 'impresscms-theme', 'impresscms-editor');
+    /**
+     * Packages types that are supported by this plugin
+     */
+    public const SUPPORTED_PACKAGE_TYPES = [
+        'impresscms-module',
+        'impresscms-theme',
+        'impresscms-translation'
+    ];
 
     /**
      * getPackageBasePath
@@ -50,23 +53,6 @@ class AddonInstaller extends LibraryInstaller
                     $icms_basepath = $extra['icms_translations_path'];
                 }
                 break;
-            case 'impresscms-plugin':
-                $moddir = explode('/', $package->getName());
-                $icms_basepath = './plugins';
-                $extra = $package->getExtra();
-                if (isset($extra['icms_plugins_path'])) {
-                    $icms_basepath = $extra['icms_plugins_path'];
-                }
-                break;
-
-            case 'impresscms-editor':
-                $moddir = explode('/', $package->getName());
-                $icms_basepath = './editors/';
-                $extra = $package->getExtra();
-                if (isset($extra['icms_editors_path'])) {
-                    $icms_basepath = $extra['icms_editors_path'];
-                }
-                break;
         }
         return $icms_basepath . $moddir[1];
     }
@@ -79,6 +65,6 @@ class AddonInstaller extends LibraryInstaller
      */
     public function supports($packageType)
     {
-        return 'impresscms-module' === $packageType;
+        return in_array($packageType, self::SUPPORTED_PACKAGE_TYPES);
     }
 } 

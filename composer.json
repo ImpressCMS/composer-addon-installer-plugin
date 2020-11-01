@@ -11,7 +11,9 @@
     ],
     "type": "composer-plugin",
     "autoload": {
-        "psr-4": {"ImpressCMS\\Composer\\": "src/"}
+        "psr-4": {
+            "ImpressCMS\\Composer\\": "src/"
+        }
     },
     "extra": {
         "class": "ImpressCMS\\Composer\\AddonInstallerPlugin"
