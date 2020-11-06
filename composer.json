@@ -1,8 +1,9 @@
 {
     "name": "impresscms/composer-module-installer-plugin",
     "description": "This plugin allows the installation of ImpressCMS addons from composer",
-    "minimum-stability": "dev",
-    "license": "MIT",
+    "minimum-stability": "alpha",
+    "prefer-stable": true,
+    "license": "GPL-2.0-or-later",
     "authors": [
         {
             "name": "David Janssens",
@@ -17,8 +18,9 @@
     },
     "extra": {
         "class": "ImpressCMS\\Composer\\AddonInstallerPlugin"
-        },
+    },
     "require": {
+        "impresscms/impresscms": ">=2.0@alpha",
         "composer-plugin-api": "1.*"
     }
 }
