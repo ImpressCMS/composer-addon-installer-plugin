@@ -12,13 +12,14 @@
     "type": "composer-plugin",
     "autoload": {
         "psr-4": {
-            "ImpressCMS\\Composer\\": "src/"
+            "ImpressCMS\\Composer\\AddonInstaller\\": "src/"
         }
     },
     "extra": {
-        "class": "ImpressCMS\\Composer\\AddonInstallerPlugin"
+        "class": "ImpressCMS\\Composer\\AddonInstaller\\ComposerPlugin"
         },
     "require": {
+        "symfony/polyfill-php80": "^1.21",
         "composer-plugin-api": "1.*"
     }
 }
