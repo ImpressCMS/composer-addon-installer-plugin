@@ -5,6 +5,7 @@ namespace ImpressCMS\Composer\AddonInstaller\LibraryInstaller;
 use Composer\Installer\LibraryInstaller;
 use Composer\Package\PackageInterface;
 use ImpressCMS\Composer\AddonInstaller\Exceptions\TranslationPackageHasUndefinedLanguageException;
+use ImpressCMS\Composer\AddonInstaller\Utils\ImpressCMSConstantsReader;
 
 /**
  * Custom installer to install impresscms supported translations
@@ -27,7 +28,8 @@ class TranslationInstaller extends LibraryInstaller
             );
         }
 
-        return './language/' . $extra['language'];
+        $constantsReader = new ImpressCMSConstantsReader($this->composer, $this->io);
+        return $constantsReader->getConstant('ICMS_ROOT_PATH', '.') . '/language/' . $extra['language'];
     }
 
     /**
