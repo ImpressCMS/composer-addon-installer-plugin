@@ -5,6 +5,7 @@ namespace ImpressCMS\Composer\AddonInstaller\LibraryInstaller;
 use Composer\Installer\LibraryInstaller;
 use Composer\Package\PackageInterface;
 use ImpressCMS\Composer\AddonInstaller\Utils\ImpressCMSConstantsReader;
+use ImpressCMS\Composer\AddonInstaller\Utils\StrHelper;
 
 /**
  * Custom installer to install impresscms supported themes
@@ -21,11 +22,11 @@ class ThemeInstaller extends LibraryInstaller
     {
         list($vendor, $dir) = explode('/', $package->getName());
 
-        if (str_starts_with($dir, 'impresscms-theme-')) {
+        if (StrHelper::str_starts_with($dir, 'impresscms-theme-')) {
             $dir = substr($dir, strlen('impresscms-theme-'));
-        } elseif (str_starts_with($dir, 'theme-')) {
+        } elseif (StrHelper::str_starts_with($dir, 'theme-')) {
             $dir = substr($dir, strlen('theme-'));
-        } elseif (str_ends_with($dir, '-theme')) {
+        } elseif (StrHelper::str_ends_with($dir, '-theme')) {
             $dir = substr($dir, 0, -strlen('-theme'));
         }
 

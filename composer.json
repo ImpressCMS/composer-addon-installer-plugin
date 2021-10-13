@@ -19,7 +19,6 @@
     "class": "ImpressCMS\\Composer\\AddonInstaller\\ComposerPlugin"
   },
   "require": {
-    "symfony/polyfill-php80": ">=1.21",
     "composer-plugin-api": "^1.0 || ^2.0",
     "phpexperts/laravel-env-polyfill": ">=1.0",
     "vlucas/phpdotenv": ">=3.3.3"
