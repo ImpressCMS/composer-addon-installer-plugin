@@ -4,6 +4,7 @@ namespace ImpressCMS\Composer\AddonInstaller\LibraryInstaller;
 
 use Composer\Installer\LibraryInstaller;
 use Composer\Package\PackageInterface;
+use ImpressCMS\Composer\AddonInstaller\Utils\ImpressCMSConstantsReader;
 
 /**
  * Custom installer to install impresscms supported themes
@@ -28,7 +29,8 @@ class ThemeInstaller extends LibraryInstaller
             $dir = substr($dir, 0, -strlen('-theme'));
         }
 
-        return './themes/' . $dir;
+        $constantsReader = new ImpressCMSConstantsReader($this->composer, $this->io);
+        return $constantsReader->getConstant('ICMS_THEME_PATH', './themes') . '/' . $dir;
     }
 
     /**

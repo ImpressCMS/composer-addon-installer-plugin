@@ -4,6 +4,7 @@ namespace ImpressCMS\Composer\AddonInstaller\LibraryInstaller;
 
 use Composer\Installer\LibraryInstaller;
 use Composer\Package\PackageInterface;
+use ImpressCMS\Composer\AddonInstaller\Utils\ImpressCMSConstantsReader;
 
 /**
  * Custom installer to install impresscms supported modules
@@ -27,7 +28,8 @@ class ModuleInstaller extends LibraryInstaller
             $dir = substr($dir, 0, -strlen('-module'));
         }
 
-        return './modules/' . $dir;
+        $constantsReader = new ImpressCMSConstantsReader($this->composer, $this->io);
+        return $constantsReader->getConstant('ICMS_MODULES_PATH', './modules') . '/' . $dir;
     }
 
     /**
