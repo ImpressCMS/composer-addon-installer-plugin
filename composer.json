@@ -25,6 +25,6 @@
     "vlucas/phpdotenv": ">=3.3.3"
   },
   "require-dev": {
-    "composer/composer": "^1.10 || ^2.1"
+    "composer/composer": "^1.10.23 || ^2.1.9"
   }
 }
