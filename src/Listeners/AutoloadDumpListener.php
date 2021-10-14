@@ -35,14 +35,14 @@ class AutoloadDumpListener
      */
     protected function clearCaches(ProcessExecutor $executor, IOInterface $IO)
     {
-        $IO->info("Clearing caches...");
+        $IO->write("<info>Clearing caches...</info>");
         if ($executor->executeImpressCMSCommand("cache:clear") > 0) {
-            $IO->warning('  Clearing system cache failed');
+            $IO->write('  <warning>Clearing system cache failed</warning>');
         } else {
             $IO->write('  System cache cleared successfully');
         }
         if ($executor->executeImpressCMSCommand("templates:cache:clear") > 0) {
-            $IO->warning('  Clearing template cache failed');
+            $IO->write('  <warning>Clearing template cache failed</warning>');
         } else {
             $IO->write('  Template cache cleared successfully');
         }

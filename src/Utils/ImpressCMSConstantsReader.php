@@ -71,11 +71,11 @@ class ImpressCMSConstantsReader
     public function load()
     {
         if ($this->exists()) {
-            $this->IO->debug('Loading ImpressCMS constants file...');
+            $this->IO->write('Loading ImpressCMS constants file...');
             /** @noinspection PhpIncludeInspection */
             require_once $this->getFilename();
         } else {
-            $this->IO->debug('Np ImpressCMS constants file was found or composer plugin can\'t load it.');
+            $this->IO->write('Np ImpressCMS constants file was found or composer plugin can\'t load it.');
         }
         self::$loaded = true;
     }
