@@ -21,7 +21,8 @@
   "require": {
     "composer-plugin-api": "^1.0 || ^2.0",
     "phpexperts/laravel-env-polyfill": ">=1.0",
-    "vlucas/phpdotenv": ">=3.3.3"
+    "vlucas/phpdotenv": ">=3.3.3",
+    "php": ">7.2.5"
   },
   "require-dev": {
     "composer/composer": "^1.10.23 || ^2.1.9"
