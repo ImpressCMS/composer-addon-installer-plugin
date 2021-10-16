@@ -4,7 +4,7 @@ namespace ImpressCMS\Composer\AddonInstaller\Utils;
 
 use Composer\Composer;
 use Composer\IO\IOInterface;
-use Dotenv\Dotenv;
+use Throwable;
 
 /**
  * Tries to read ImpressCMS constants file
@@ -71,11 +71,15 @@ class ImpressCMSConstantsReader
     public function load()
     {
         if ($this->exists()) {
-            $this->IO->write('Loading ImpressCMS constants file...');
-            /** @noinspection PhpIncludeInspection */
-            require_once $this->getFilename();
+            try {
+                $this->IO->write('Loading ImpressCMS constants file...');
+                /** @noinspection PhpIncludeInspection */
+                require_once $this->getFilename();
+            } catch (Throwable $ex) {
+                $this->IO->write('Np ImpressCMS constants file can\'t be loaded at this moment.');
+            }
         } else {
-            $this->IO->write('Np ImpressCMS constants file was found or composer plugin can\'t load it.');
+            $this->IO->write('Np ImpressCMS constants file was found.');
         }
         self::$loaded = true;
     }
@@ -87,11 +91,9 @@ class ImpressCMSConstantsReader
      */
     public function exists(): bool
     {
-        return class_exists(Dotenv::class) &&
-            function_exists('env') &&
-            file_exists(
-                $this->getFilename()
-            );
+        return file_exists(
+            $this->getFilename()
+        );
     }
 
     /**
@@ -102,7 +104,7 @@ class ImpressCMSConstantsReader
     public function getFilename(): string
     {
         return realpath(
-            $this->composer->getPackage()->getTargetDir() . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR . 'constants.php'
+            dirname(\Composer\Factory::getComposerFile()) . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR . 'constants.php'
         );
     }
 
