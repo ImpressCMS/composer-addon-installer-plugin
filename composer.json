@@ -20,7 +20,7 @@
   },
   "require": {
     "composer-plugin-api": "^1.0 || ^2.0",
-    "vlucas/phpdotenv": "^3.3.4",
+    "vlucas/phpdotenv": "^5.5.0",
     "php": ">7.2.5",
     "imponeer/env": "^1.0.0"
   },
