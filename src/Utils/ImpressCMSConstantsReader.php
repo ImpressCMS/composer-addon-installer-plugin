@@ -76,10 +76,10 @@ class ImpressCMSConstantsReader
                 /** @noinspection PhpIncludeInspection */
                 require_once $this->getFilename();
             } catch (Throwable $ex) {
-                $this->IO->write('Np ImpressCMS constants file can\'t be loaded at this moment.');
+                $this->IO->write('No ImpressCMS constants file can\'t be loaded at this moment.');
             }
         } else {
-            $this->IO->write('Np ImpressCMS constants file was found.');
+            $this->IO->write('No ImpressCMS constants file was found.');
         }
         self::$loaded = true;
     }
